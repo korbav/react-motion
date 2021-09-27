@@ -12,6 +12,10 @@ jobs:
     name: Publish Latest to NPM
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.client_payload.sha }}
       - name: Publish to NPM
         uses: JS-DevTools/npm-publish@v1
         with:
