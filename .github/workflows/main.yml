@@ -17,8 +17,9 @@ jobs:
         with:
           ref: ${{ github.event.client_payload.sha }}
       - name: Publish to NPM
-        uses: JS-DevTools/npm-publish@v1
+        uses: JS-DevTools/npm-publish@latest
         with:
+          check-version: true
           token: ${{ secrets.NPM_TOKEN }}
           registry: https://registry.npmjs.org/
           package: package.json
