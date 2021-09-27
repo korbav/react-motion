@@ -1,5 +1,5 @@
 {
-  "name": "korbav/react-motion",
+  "name": "@korbav/react-motion",
   "version": "0.0.0",
   "description": "A spring that solves your animation problems. Fork enabling React 17 compatibility & removing deprecated UNSAFE_* methods.",
   "main": "lib/react-motion.js",
