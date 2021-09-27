@@ -17,9 +17,6 @@ jobs:
         with:
           ref: ${{ github.event.client_payload.sha }}
       - uses: bahmutov/npm-install@v1
-      - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.client_payload.sha }}
       - name: Extract version
         id: extract_version
         uses: Saionaro/extract-package-version@v1.1.1
@@ -32,3 +29,4 @@ jobs:
           token: ${{ secrets.NPM_TOKEN }}
           registry: https://registry.npmjs.org/
           package: package.json
+          access: public
