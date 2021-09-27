@@ -25,7 +25,6 @@ jobs:
         uses: JS-DevTools/npm-publish@v1.4.3
         with:
           check-version: true
-          tag: ${{ steps.extract_version.outputs.version }}
           token: ${{ secrets.NPM_TOKEN }}
           registry: https://registry.npmjs.org/
           package: package.json
