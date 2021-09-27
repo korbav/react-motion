@@ -8,10 +8,14 @@ on:
     - master
 
 jobs:
-  publish:
+  npm-publish:
+    name: Publish Latest to NPM
     runs-on: ubuntu-latest
     steps:
+      - name: Publish to NPM
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
           check-version: true
+          registry: https://registry.npmjs.org/
+          package: package.json
