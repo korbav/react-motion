@@ -65,10 +65,10 @@
   "scripts": {
     "start": "node server.js",
     "prebuild:dist": "rm -rf build",
-    "build:dist": "rollup -c",
+    "build:dist": "npx rollup -c",
     "prebuild:lib": "rm -rf lib",
-    "build:lib": "babel src --out-dir lib",
-    "build:flow": "flow-copy-source -v src lib",
+    "build:lib": "npx babel src --out-dir lib",
+    "build:flow": "npx flow-copy-source -v src lib",
     "build": "npm run build:dist && npm run build:lib && npm run build:flow",
     "build-demos": "webpack",
     "lint": "eslint --ext .js,.jsx .",

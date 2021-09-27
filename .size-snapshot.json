@@ -1,25 +1,25 @@
 {
   "react-motion.js": {
-    "bundled": 87646,
-    "minified": 26158,
-    "gzipped": 7611
+    "bundled": 77531,
+    "minified": 22987,
+    "gzipped": 6651
   },
   "react-motion.min.js": {
-    "bundled": 58265,
-    "minified": 18505,
-    "gzipped": 5394
+    "bundled": 52917,
+    "minified": 15623,
+    "gzipped": 4456
   },
   "react-motion.esm.js": {
-    "bundled": 43283,
-    "minified": 14584,
-    "gzipped": 3587,
+    "bundled": 400,
+    "minified": 359,
+    "gzipped": 142,
     "treeshaked": {
       "rollup": {
-        "code": 6381,
-        "import_statements": 196
+        "code": 169,
+        "import_statements": 169
       },
       "webpack": {
-        "code": 7586
+        "code": 1351
       }
     }
   }
