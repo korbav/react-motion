@@ -1,7 +1,7 @@
-import nodeResolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import babel from 'rollup-plugin-babel';
-import replace from 'rollup-plugin-replace';
+import nodeResolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import babel from '@rollup/plugin-babel';
+import replace from '@rollup/plugin-replace';
 import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
 import { uglify } from 'rollup-plugin-uglify';
 import pkg from './package.json';
@@ -19,7 +19,7 @@ const external = id =>
 const getBabelOptions = () => ({
   babelrc: false,
   exclude: '**/node_modules/**',
-  runtimeHelpers: true,
+  babelHelpers: 'runtime',
   plugins: [
     ['@babel/proposal-class-properties', { loose: true }],
     ['transform-react-remove-prop-types', { mode: 'unsafe-wrap' }],
@@ -45,7 +45,7 @@ export default [
       nodeResolve(),
       babel(getBabelOptions()),
       commonjs(commonjsOptions),
-      replace({ 'process.env.NODE_ENV': JSON.stringify('development') }),
+      replace({ 'process.env.NODE_ENV': JSON.stringify('development'), preventAssignment: true, }),
       sizeSnapshot(),
     ],
   },

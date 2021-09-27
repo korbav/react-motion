@@ -1,13 +1,13 @@
 {
   "react-motion.js": {
-    "bundled": 77531,
-    "minified": 22987,
-    "gzipped": 6651
+    "bundled": 86841,
+    "minified": 25943,
+    "gzipped": 7588
   },
   "react-motion.min.js": {
-    "bundled": 52917,
-    "minified": 15623,
-    "gzipped": 4456
+    "bundled": 56294,
+    "minified": 18101,
+    "gzipped": 5269
   },
   "react-motion.esm.js": {
     "bundled": 400,
