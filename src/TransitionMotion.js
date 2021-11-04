@@ -20,6 +20,7 @@ import type {
   DidLeave,
   TransitionProps,
 } from './Types';
+import isEqual from 'lodash.isequal';
 
 const msPerFrame = 1000 / 60;
 
@@ -576,28 +577,29 @@ export default class TransitionMotion extends React.Component<
     this.startAnimationIfNecessary();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if (this.unreadPropStyles) {
       // previous props haven't had the chance to be set yet; set them here
       this.clearUnreadPropStyle(this.unreadPropStyles);
     }
+    if(!isEqual(prevProps, this.props)) {
+      const { styles } = this.props;
+      if (typeof styles === 'function') {
+        this.unreadPropStyles = styles(
+          rehydrateStyles(
+            this.state.mergedPropsStyles,
+            this.unreadPropStyles,
+            this.state.lastIdealStyles,
+          ),
+        );
+      } else {
+        this.unreadPropStyles = styles;
+      }
 
-    const { styles } = this.props;
-    if (typeof styles === 'function') {
-      this.unreadPropStyles = styles(
-        rehydrateStyles(
-          this.state.mergedPropsStyles,
-          this.unreadPropStyles,
-          this.state.lastIdealStyles,
-        ),
-      );
-    } else {
-      this.unreadPropStyles = styles;
-    }
-
-    if (this.animationID == null) {
-      this.prevTime = defaultNow();
-      this.startAnimationIfNecessary();
+      if (this.animationID == null) {
+        this.prevTime = defaultNow();
+        this.startAnimationIfNecessary();
+      }
     }
   }
 
