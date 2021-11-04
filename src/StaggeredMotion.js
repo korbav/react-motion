@@ -15,6 +15,7 @@ import type {
   Velocity,
   StaggeredProps,
 } from './Types';
+import isEqual from 'lodash.isequal';
 
 const msPerFrame = 1000 / 60;
 
@@ -276,16 +277,17 @@ export default class StaggeredMotion extends React.Component<
     this.startAnimationIfNecessary();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if (this.unreadPropStyles != null) {
       // previous props haven't had the chance to be set yet; set them here
       this.clearUnreadPropStyle(this.unreadPropStyles);
     }
-
-    this.unreadPropStyles = this.props.styles(this.state.lastIdealStyles);
-    if (this.animationID == null) {
-      this.prevTime = defaultNow();
-      this.startAnimationIfNecessary();
+    if(!isEqual(prevProps, this.props)) {
+      this.unreadPropStyles = this.props.styles(this.state.lastIdealStyles);
+      if (this.animationID == null) {
+        this.prevTime = defaultNow();
+        this.startAnimationIfNecessary();
+      }
     }
   }
 
